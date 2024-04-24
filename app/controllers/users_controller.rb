@@ -7,6 +7,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    render({:template => "user_templates/show"})
+    url_username = params.fetch("username")
+    @my_id = User.where({:username => url_username}).at(0).id
+    
+    matching_username = User.where({:username => url_username})
+    @the_user = matching_username.at(0)
+
+    if @the_user == nil
+       redirect_to("/")
+    else
+      render({:template => "user_templates/show"})
+    end 
   end
 end
