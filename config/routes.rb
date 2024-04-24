@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   get("/", {:controller => "users", :action => "index"})
-  get("/", {:controller => "users", :action => "show"})
+  get("/users", {:controller => "users", :action => "index"})
+  get("/users/:username", {:controller => "users", :action => "show"})
 
 
 end
