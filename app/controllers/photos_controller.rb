@@ -30,7 +30,7 @@ class PhotosController < ApplicationController
     matching_photo = Photo.where({:id => url_id})
     @the_photo = matching_photo.at(0)
     @the_photo.destroy
-    redirect_to("/photos/")
+    redirect_to("/photos")
   end
  
   def create
@@ -40,7 +40,7 @@ class PhotosController < ApplicationController
     the_photo.owner_id = params.fetch("input_owner_id")
 
     the_photo.save
-    redirect_to("/photos/")
+    redirect_to("/photos")
   end
 
   def add_comment
