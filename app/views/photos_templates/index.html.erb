@@ -51,22 +51,22 @@
       </td>
 
       <td>
-        Once you’ve accepted your flaws, no one can use them against you.
+        <%=a_photo.caption%>
       </td>
 
       <td>
-        catherina
+        <%=a_photo.poster.username%>
       </td>
 
       <td>
-        2019-04-27 11:56:39 UTC
+        <%=a_photo.created_at%>
       </td>
 
       <td>
-        <a href="/photos/777">
+        <a href="/photos/<%=a_photo.id%>">
           Show details
         </a>
       </td>
    </tr>
-<% end %>
+  <% end %>
 </table>
