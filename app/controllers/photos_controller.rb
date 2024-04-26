@@ -40,7 +40,7 @@ class PhotosController < ApplicationController
     the_photo.owner_id = params.fetch("input_owner_id")
 
     the_photo.save
-    redirect_to("/photos/" + the_photo.id)
+    redirect_to("/photos/" + the_photo.id.to_s)
   end
 
   def add_comment
