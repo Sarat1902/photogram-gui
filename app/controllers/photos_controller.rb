@@ -25,7 +25,22 @@ class PhotosController < ApplicationController
 
   end
 
+  def delete
+    url_id = params.fetch("photo_id")
+    matching_photo = Photo.where({:id => url_id})
+    @the_photo = matching_photo.at(0)
+    @the_photo.destroy
+    redirect_to("/photos/")
+  end
+ 
+  def create
+    the_photo = Photo.new
+    the_photo.image = params.fetch("input_image")
+    the_photo.caption = params.fetch("input_caption")
+    the_photo.owner_id = params.fetch("input_owner_id")
+
+    the_photo.save
+    redirect_to("/photos/")
+  end
   
-
-
 end
