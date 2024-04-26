@@ -8,7 +8,7 @@
 </ul>
 
 <h1>
-<%= @user_name %>
+<%= @the_user.username %>
 </h1>
 
 <dl>
@@ -16,23 +16,23 @@
     ID
   </dt>
   <dd>
-    <%= @my_id %>
+    <%= @the_user.id %>
   </dd>
 
   <dt>
     Edit user
   </dt>
   <dd>
-    <form action="/update_user/@my_id" method="post">
+    <form action="/update_user/<%= @the_user.id %>" method="post">
       <label for="browser_username">Username</label>
-      <input id="browser_username" type="text" name="input_username" value=<%=@user_name%>>
+      <input id="browser_username" type="text" name="input_username" value=<%=@the_user.username%>>
 
       <button>Update user</button>
     </form>
   </dd>
 </dl>
 
-<h2>Own photos (0)</h2>
+<h2>Own photos (<%=@the_user.own_photos.size%>)</h2>
 
 <table border="1">
   <tr>
@@ -55,11 +55,25 @@
     <th>
     </th>
   </tr>
-
+  
+   <% @the_user.own_photos.each do |own_photo| %>
+  
   <tr>
     <td>
-      <%= @my_id.own_photos %>
+      <image src = "<%= own_photo.image%>">
     </td>
-  </tr>
+     
+    <td>
+        <%= own_photo.poster.username %>
+    </td>
+ 
+    <td>
+         <%= own_photo.caption%>
+     </td>
 
+     <td>
+         <%= own_photo.created_at %>
+     </td>
+  </tr>
+   <%end%>
 </table>
